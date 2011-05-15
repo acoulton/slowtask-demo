@@ -54,7 +54,9 @@ class Controller_Welcome extends Controller {
 		    case 'slow_html':
 			$task->complete(
 			    new SlowTask_Complete_HTML(
-				    View::factory('done')->render()));
+				    "<h1>Slowtask was done!</h1><p>"
+				    .HTML::anchor('/',"Go back")."</p>"));
+
 		    break;
 		}
 		return;
