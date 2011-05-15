@@ -1,24 +1,6 @@
 [submodule "system"]
 	path = system
 	url = http://github.com/kohana/core.git
-[submodule "modules/codebench"]
-	path = modules/codebench
-	url = http://github.com/kohana/codebench.git
-[submodule "modules/database"]
-	path = modules/database
-	url = http://github.com/kohana/database.git
-[submodule "modules/image"]
-	path = modules/image
-	url = http://github.com/kohana/image.git
-[submodule "modules/orm"]
-	path = modules/orm
-	url = http://github.com/kohana/orm.git
-[submodule "modules/pagination"]
-	path = modules/pagination
-	url = http://github.com/kohana/pagination.git
-[submodule "modules/auth"]
-	path = modules/auth
-	url = http://github.com/kohana/auth.git
 [submodule "modules/userguide"]
 	path = modules/userguide
 	url = http://github.com/kohana/userguide.git
@@ -28,6 +10,6 @@
 [submodule "modules/unittest"]
 	path = modules/unittest
 	url = http://github.com/kohana/unittest.git
-[submodule "modules/oauth"]
-	path = modules/oauth
-	url = http://github.com/kohana/oauth.git
+
+
+
