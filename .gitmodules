@@ -13,3 +13,9 @@
 
 
 
+[submodule "modules/uuid"]
+	path = modules/uuid
+	url = git://github.com/shadowhand/uuid.git
+[submodule "modules/slowtask"]
+	path = modules/slowtask
+	url = git://github.com/acoulton/slowtask.git
