@@ -5,9 +5,9 @@
 	<property name="basedir" value="${project.basedir}"/>
 	<property name="builddir" value="${basedir}/build"/>
 
-	<property name="branch" value="3.0/develop"/>
+	<property name="branch" value="3.2/develop"/>
 
-	<property name="submodules" value="system,modules/auth,modules/cache,modules/codebench,modules/database,modules/image,modules/oauth,modules/orm,modules/pagination,modules/unittest,modules/userguide"/>
+	<property name="submodules" value="system,modules/auth,modules/cache,modules/codebench,modules/database,modules/image,modules/orm,modules/unittest,modules/userguide"/>
 
 	<!-- Shows the help message -->
 	<target name="help">
@@ -149,16 +149,8 @@
 			<property name="dir"        value="${basedir}/modules/image" />
 		</phingcall>
 		<phingcall target="_dev-setup-remote">
-			<property name="repository" value="git@github.com:kohana/oauth.git" />
-			<property name="dir"        value="${basedir}/modules/oauth" />
-		</phingcall>
-		<phingcall target="_dev-setup-remote">
 			<property name="repository" value="git@github.com:kohana/orm.git" />
 			<property name="dir"        value="${basedir}/modules/orm" />
-		</phingcall>
-		<phingcall target="_dev-setup-remote">
-			<property name="repository" value="git@github.com:kohana/pagination.git" />
-			<property name="dir"        value="${basedir}/modules/pagination" />
 		</phingcall>
 		<phingcall target="_dev-setup-remote">
 			<property name="repository" value="git@github.com:kohana/unittest.git" />
@@ -177,12 +169,12 @@
 
 	<!-- Run unit tests -->
 	<target name="test">
-		<exec command="phpunit --bootstrap=modules/unittest/bootstrap.php modules/unittest/tests.php" checkreturn="true" passthru="true"/>
+		<exec command="phpunit --bootstrap=modules/unittest/bootstrap_all_modules.php modules/unittest/tests.php" checkreturn="true" passthru="true"/>
 	</target>
 
 	<!-- Run unit tests and generate junit.xml and clover.xml -->
 	<target name="test-log">
-		<exec command="phpunit --bootstrap=modules/unittest/bootstrap.php --coverage-html=${builddir}/coverage --log-junit=${builddir}/logs/junit.xml --coverage-clover=${builddir}/logs/clover.xml modules/unittest/tests.php" checkreturn="true" passthru="true"/>
+		<exec command="phpunit --bootstrap=modules/unittest/bootstrap_all_modules.php --coverage-html=${builddir}/coverage --log-junit=${builddir}/logs/junit.xml --coverage-clover=${builddir}/logs/clover.xml modules/unittest/tests.php" checkreturn="true" passthru="true"/>
 	</target>
 
 	<!-- Run PHP Code Sniffer -->
@@ -191,6 +183,7 @@
 			<fileset dir="${basedir}">
 				<include name="**/*.php" />
 				<exclude name="**/vendor/**" />
+				<exclude name="**/tests/**" />
 			</fileset>
 			<formatter type="default" usefile="false"/>
 		</phpcodesniffer>
@@ -202,6 +195,7 @@
 			<fileset dir="${basedir}">
 				<include name="**/*.php" />
 				<exclude name="**/vendor/**" />
+				<exclude name="**/tests/**" />
 			</fileset>
 			<formatter type="default" usefile="false"/>
 			<formatter type="checkstyle" outfile="${builddir}/logs/checkstyle.xml"/>
@@ -243,7 +237,7 @@
 
 	<!-- Run PHP CodeBrowser and generate output -->
 	<target name="phpcb-log">
-		<exec command="phpcb --log ${builddir}/logs --source ${basedir} --output ${builddir}/code-browser"  passthru="true"/>
+		<exec command="phpcb --exclude=${builddir}/** --log=${builddir}/logs --source=${basedir} --output=${builddir}/code-browser"  passthru="true"/>
 	</target>
 
 	<!-- Build a release .zip -->
