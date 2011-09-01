@@ -4,12 +4,12 @@ class Controller_Welcome extends Controller {
 
 	public function action_index()
 	{	
-	    $this->request->response = View::factory('welcome');
+	    $this->response->body(View::factory('welcome'));
 	}
 
 	public function action_done()
 	{
-	    $this->request->response = "Done!";
+	    $this->response->body("Done!");
 	}
 
 	public function action_slow_redirect()
@@ -43,7 +43,7 @@ class Controller_Welcome extends Controller {
 		 * Begin the SlowTask - this sends the progress bar to the browser
 		 * and closes the connection. From here on in, you're running headless
 		 */
-		$task = SlowTask::begin($this->request, "Beginning a slow task")
+		$task = SlowTask::begin($this->response, "Beginning a slow task")
 			    /*
 			     * If you have a fixed range and a linear task, let
 			     * SlowTask calculate your % complete for you.
