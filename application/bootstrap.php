@@ -81,6 +81,7 @@ if (isset($_SERVER['KOHANA_ENV']))
  */
 Kohana::init(array(
 	'base_url'   => '/slowtask-demo/',
+	'index_file' => false,
 ));
 
 /**
