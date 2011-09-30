@@ -68,7 +68,7 @@ class Controller_Welcome extends Controller {
 		}
 
 		// In a real app, you'd generally have a single completion type per task
-		switch ($this->request->action)
+		switch ($this->request->action())
 		{
 		    case 'slow_file':
 			/*
