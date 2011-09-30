@@ -113,7 +113,7 @@ class Controller_Welcome extends Controller {
 	    }
 	    catch (Exception $e)
 	    {
-		$task->complete(new SlowTask_Complete_HTML(Kohana::exception_text($e)));
+		$task->complete(new SlowTask_Complete_HTML(Kohana_Exception::text($e)));
 		throw $e;
 	    }
 		
